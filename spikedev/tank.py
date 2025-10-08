@@ -25,7 +25,7 @@
 
 # standard libraries
 import math
-import utime
+import time
 
 # spikedev libraries
 from spikedev.logging import log_msg
@@ -121,7 +121,7 @@ class MoveTank:
     def _wait(self):
         # This is ugly but SPIKE does not have the _thread module :(
         while not self.rxed_callback:
-            utime.sleep(0.01)
+            time.sleep(0.01)
 
     def _speed_percentage(self, speed):
 

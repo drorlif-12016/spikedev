@@ -29,7 +29,7 @@ A StopWatch class for tracking the amount of time between events
 """
 
 # standard libraries
-import utime
+import time
 
 
 class StopWatch(object):
@@ -58,7 +58,7 @@ class StopWatch(object):
             raise StopWatchAlreadyStartedException()
 
         self._stopped_total_time = None
-        self._start_time = utime.ticks_ms()
+        self._start_time = time.ticks_ms()
 
     def stop(self):
         """
@@ -67,7 +67,7 @@ class StopWatch(object):
         if self._start_time is None:
             return
 
-        self._stopped_total_time = utime.ticks_ms() - self._start_time
+        self._stopped_total_time = time.ticks_ms() - self._start_time
         self._start_time = None
 
     def reset(self):
@@ -100,7 +100,7 @@ class StopWatch(object):
         if self._stopped_total_time is not None:
             return self._stopped_total_time
 
-        return utime.ticks_ms() - self._start_time if self._start_time is not None else 0
+        return time.ticks_ms() - self._start_time if self._start_time is not None else 0
 
     @property
     def value_secs(self):

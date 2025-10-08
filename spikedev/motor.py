@@ -24,7 +24,7 @@
 # -----------------------------------------------------------------------------
 
 # standard libraries
-import utime
+import time
 
 # spikedev libraries
 from spikedev.logging import log_msg
@@ -421,7 +421,7 @@ class Motor:
 
         # wait for motor to connect
         while self.port.motor is None:
-            utime.sleep(0.1)
+            time.sleep(0.1)
 
         # dwalton
         self.port.motor.mode(MotorMode.POS)
@@ -454,7 +454,7 @@ class Motor:
     def _wait(self):
         # This is ugly but SPIKE does not have the _thread module :(
         while not self.rxed_callback:
-            utime.sleep(0.01)
+            time.sleep(0.01)
 
     def _validate_degrees(self, degrees):
         if degrees < MININT or degrees > MAXINT:

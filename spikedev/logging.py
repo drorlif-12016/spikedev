@@ -1,5 +1,5 @@
 # standard libraries
-import utime
+import time
 
 
 def _timestamp():
@@ -15,7 +15,7 @@ def _timestamp():
     year = 2020
     month = 1
 
-    ms = utime.ticks_ms()
+    ms = time.ticks_ms()
     (day, ms) = divmod(ms, 86400000)
     (hour, ms) = divmod(ms, 3600000)
     (minute, ms) = divmod(ms, 60000)

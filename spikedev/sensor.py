@@ -1,5 +1,5 @@
 # standard libraries
-import utime
+import time
 
 # spikedev libraries
 from spikedev.logging import log_msg
@@ -21,7 +21,7 @@ class Sensor:
 
         # wait for sensor to connect
         while self.port.device is None:
-            utime.sleep(0.1)
+            time.sleep(0.1)
 
     def __str__(self):
         if self.desc is not None:
@@ -120,7 +120,7 @@ class TouchSensor(Sensor):
                 log_msg("{} was not pressed within {}ms".format(self, timeout_ms))
                 return False
 
-            utime.sleep(0.01)
+            time.sleep(0.01)
 
         log_msg("{} pressed".format(self))
         return True
@@ -144,7 +144,7 @@ class TouchSensor(Sensor):
                 log_msg("{} was not released within {}ms".format(self, timeout_ms))
                 return False
 
-            utime.sleep(0.01)
+            time.sleep(0.01)
 
         log_msg("{} released".format(self))
         return True
